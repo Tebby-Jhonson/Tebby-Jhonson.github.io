@@ -1,0 +1,77 @@
+<!-- Enlaza con el archivo CSS -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Screen</title>
+    <style>
+        /* Estilos para la pantalla de carga */
+        #loading-container {
+            position: fixed; /* Fija la posición en la ventana */
+            top: 0; /* Ubicación en la parte superior */
+            left: 0; /* Ubicación en el lado izquierdo */
+            width: 100vw; /* Ancho completo de la ventana */
+            height: 100vh; /* Alto completo de la ventana */
+            background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+            display: flex; /* Utiliza flexbox para centrar el contenido */
+            flex-direction: column; /* Coloca los elementos en una columna */
+            justify-content: center; /* Centra el GIF verticalmente */
+            align-items: center; /* Centra el GIF horizontalmente */
+            z-index: 9999; /* Asegura que esté en la parte superior */
+        }
+
+        #loading-container img {
+            width: 500px; /* Tamaño del GIF, ajusta según sea necesario */
+            height: auto; /* Mantiene la relación de aspecto */
+        }
+
+        #loading-bar {
+            width: 50%; /* Ancho de la barra de carga, ajusta según sea necesario */
+            height: 10px; /* Altura de la barra de carga */
+            background: #ccc; /* Color de fondo de la barra */
+            border-radius: 5px; /* Bordes redondeados */
+            overflow: hidden; /* Oculta el contenido que desborda la barra */
+            position: absolute; /* Posición absoluta en la parte inferior */
+            bottom: 20px; /* Espaciado desde la parte inferior */
+            left: 50%; /* Centro horizontal */
+            transform: translateX(-50%); /* Ajusta el centro horizontalmente */
+        }
+
+        #loading-bar span {
+            display: block;
+            height: 100%;
+            background: #4CAF50; /* Color de la barra de carga */
+            width: 0%; /* Comienza desde 0% */
+            animation: load 10s linear forwards; /* Duración de la animación (10 segundos) */
+        }
+
+        @keyframes load {
+            to {
+                width: 100%; /* Llenado completo al 100% */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loading-container">
+        <img src="img/Gif.gif" alt="Loading..."> <!-- Ruta al GIF -->
+        <div id="loading-bar">
+            <span></span>
+        </div>
+    </div>
+
+    <script>
+        // Oculta la pantalla de carga después de 10 segundos y redirige a 8Reinas.html
+        setTimeout(function() {
+            window.location.href = '8Reinas.html';
+        }, 10000); // Tiempo en milisegundos (10000 ms = 10 segundos)
+    </script>
+</body>
+</html>
+
+
+<!-- 
+01000101 01101101 01101101 01100001 01101110 01110101 01100101 01101100 00100000 01010000 01100101 01110010 01100101 01111010 00100000 01010101 01101110 01101001 01101011 01101001 01101110 01101111 
+-->

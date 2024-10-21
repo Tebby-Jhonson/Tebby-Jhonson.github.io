@@ -1,0 +1,175 @@
+/* Estilos generales para el cuerpo de la página */
+body {
+    display: flex; /* Utiliza flexbox para la distribución */
+    flex-direction: column; /* Coloca los elementos en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    justify-content: space-between; /* Espacia los elementos verticalmente */
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    margin: 0; /* Elimina el margen por defecto */
+    background-color: #e0e0e0; /* Fondo beige */
+}
+
+/* Estilos para el encabezado */
+header {
+    display: flex; /* Utiliza flexbox para la distribución */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
+    width: 100%; /* Ocupa el 100% del ancho de la página */
+    padding: 15px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto del elemento */
+    background-color: #333; /* Color de fondo del encabezado */
+    color: white; /* Color del texto */
+}
+
+/* Contenedor para las imágenes y el tablero */
+#images-container {
+    display: flex; /* Utiliza flexbox para la distribución */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: center; /* Centra horizontalmente el tablero */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor padre */
+    padding: 0 20px; /* Espaciado lateral */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto del elemento */
+}
+
+/* Estilo para la imagen a la izquierda */
+#image-left {
+    width: 200px; /* Ancho de la imagen */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-right: 150px; /* Espaciado a la derecha de la imagen */
+}
+
+/* Estilo para la imagen a la derecha */
+#image-right {
+    width: 200px; /* Ancho de la imagen */
+    height: auto; /* Mantiene la relación de aspecto */
+    margin-left: 150px; /* Espaciado a la izquierda de la imagen */
+}
+
+/* Estilos para el contenedor del tablero */
+#board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw; /* Ancho relativo al viewport */
+    height: 27vw; /* Altura relativa al viewport */
+    border: 0px solid #333; /* Borde alrededor del tablero */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #fff; /* Color de fondo */
+    box-sizing: border-box; /* Incluye padding y border en el tamaño total */
+}
+
+#board {
+    width: 100%; /* Asegura que el tablero ocupe todo el contenedor */
+    height: 100%; /* Asegura que el tablero ocupe todo el contenedor */
+    border-collapse: collapse; /* Colapsa bordes de celdas */
+}
+
+#board td {
+    width: 60px; /* Tamaño de las celdas */
+    height: 60px; /* Tamaño de las celdas */
+    border: 1px solid black; /* Borde de las celdas */
+    padding: 0; /* Elimina padding */
+    margin: 0; /* Elimina margin */
+}
+
+/* Colores alternos para las celdas del tablero */
+#board tr:nth-child(even) td:nth-child(even),
+#board tr:nth-child(odd) td:nth-child(odd) {
+    background-color: #d2b48c; /* Color de las celdas en filas y columnas pares */
+}
+
+#board tr:nth-child(even) td:nth-child(odd),
+#board tr:nth-child(odd) td:nth-child(even) {
+    background-color: #8b4513; /* Color de las celdas en filas y columnas impares */
+}
+
+/* Estilo para las imágenes dentro de las celdas */
+#board img {
+    width: 100%; /* Ancho de la imagen */
+    height: 100%; /* Altura de la imagen */
+    display: block; /* Asegura que la imagen se comporte como un bloque, ocupando solo el espacio necesario */
+    margin: auto; /* Centra la imagen en la celda */
+}
+
+/* Estilo CSS para las reinas en el tablero */
+.queen {
+    width: 40px; /* Ajusta el tamaño de las imágenes según sea necesario */
+    height: 40px; /* Ajusta el tamaño de las imágenes según sea necesario */
+}
+
+/* Estilo para celdas deshabilitadas */
+.disabled {
+    background-color: #a9a9a9; /* Color de fondo para celdas deshabilitadas */
+    cursor: not-allowed; /* Cambia el cursor cuando se pasa sobre una celda deshabilitada */
+}
+
+/* Estilos para el pie de página */
+footer {
+    display: flex; /* Utiliza flexbox para la distribución */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    width: 100%; /* Ocupa el 100% del ancho de la página */
+    padding: 15px; /* Espaciado interno */
+    box-sizing: border-box; /* Incluye padding y border en el ancho y alto del elemento */
+    background-color: #333; /* Color de fondo del pie de página */
+}
+
+/* Estilos para los controles del juego */
+.controls {
+    text-align: center; /* Centra el texto dentro de los controles */
+}
+
+/* Estilos para los botones dentro de los controles */
+.controls button {
+    margin: 5px; /* Espaciado alrededor de los botones */
+    padding: 10px 20px; /* Espaciado interno de los botones */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #4CAF50; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+}
+
+/* Estilo para botones deshabilitados */
+.controls button:disabled {
+    background-color: #ccc; /* Color de fondo para botones deshabilitados */
+    cursor: not-allowed; /* Cambia el cursor cuando se pasa sobre un botón deshabilitado */
+}
+
+/* Estilos para el estado del juego */
+#status {
+    text-align: center; /* Centra el texto del estado */
+    font-size: 18px; /* Tamaño de la fuente */
+    margin-top: 10px; /* Espaciado superior */
+}
+
+/* Estilos para los campos de entrada de texto */
+input {
+    padding: 8px; /* Espaciado interno */
+    width: 150px; /* Ancho del campo de entrada */
+    font-size: 16px; /* Tamaño de la fuente */
+    border-radius: 4px; /* Bordes redondeados */
+    border: 1px solid #ddd; /* Borde del campo de entrada */
+}
+
+/* Estilo para el campo de entrada cuando está en foco */
+input:focus {
+    border-color: #4CAF50; /* Cambia el color del borde cuando el campo de entrada está en foco */
+    outline: none; /* Elimina el borde por defecto del navegador */
+}
+
+/* Estilo para el contador de reinas colocadas */
+.movable-counter {
+    position: absolute;
+    top: 20px; /* Mantén el valor según lo necesites */
+    left: 700px !important; /* Usa !important para asegurar que se aplique esta regla */
+    background-color: #fff;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+
+/* 
+01000101 01101101 01101101 01100001 01101110 01110101 01100101 01101100 00100000 01010000 01100101 01110010 01100101 01111010 00100000 01010101 01101110 01101001 01101011 01101001 01101110 01101111  
+*/

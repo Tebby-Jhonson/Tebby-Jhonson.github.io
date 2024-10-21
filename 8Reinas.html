@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador 8 Reinas</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Enlaza con el archivo CSS -->
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <div class="player-info" id="player1-info">
+            <div class="player-name">
+                <label for="player1Name">Nombre Jugador 1:</label>
+                <input type="text" id="player1Name" placeholder="Nombre del Jugador 1" oninput="updatePlayer1Name()">
+            </div>
+        </div>
+
+        <!-- Información del jugador 2 -->
+        <div class="player-info" id="player2-info">
+            <div class="player-name">
+                <label for="player2Name">Nombre Jugador 2:</label>
+                <input type="text" id="player2Name" placeholder="Nombre del Jugador 2" oninput="updatePlayer2Name()">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 style="text-align: center;"></h1> <!-- Aquí se puede añadir un título si se desea -->
+
+        <!-- Contenedor para el contador de reinas colocadas -->
+        <div id="queen-counter" class="movable-counter">
+            <span>Contador: <span id="player1Queens">0</span> | <span id="player2Queens">0</span></span>
+        </div>
+
+        <!-- Contenedor para las imágenes y el tablero -->
+        <div id="images-container">
+            <img src="img/Imagen-Blanca.png" id="image-left" alt="Imagen Blanca">
+            <div id="board-container">
+                <table id="board">
+                    <tbody>
+                        <tr><td onclick="toggleQueen(this, 0, 0)"></td><td onclick="toggleQueen(this, 0, 1)"></td><td onclick="toggleQueen(this, 0, 2)"></td><td onclick="toggleQueen(this, 0, 3)"></td><td onclick="toggleQueen(this, 0, 4)"></td><td onclick="toggleQueen(this, 0, 5)"></td><td onclick="toggleQueen(this, 0, 6)"></td><td onclick="toggleQueen(this, 0, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 1, 0)"></td><td onclick="toggleQueen(this, 1, 1)"></td><td onclick="toggleQueen(this, 1, 2)"></td><td onclick="toggleQueen(this, 1, 3)"></td><td onclick="toggleQueen(this, 1, 4)"></td><td onclick="toggleQueen(this, 1, 5)"></td><td onclick="toggleQueen(this, 1, 6)"></td><td onclick="toggleQueen(this, 1, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 2, 0)"></td><td onclick="toggleQueen(this, 2, 1)"></td><td onclick="toggleQueen(this, 2, 2)"></td><td onclick="toggleQueen(this, 2, 3)"></td><td onclick="toggleQueen(this, 2, 4)"></td><td onclick="toggleQueen(this, 2, 5)"></td><td onclick="toggleQueen(this, 2, 6)"></td><td onclick="toggleQueen(this, 2, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 3, 0)"></td><td onclick="toggleQueen(this, 3, 1)"></td><td onclick="toggleQueen(this, 3, 2)"></td><td onclick="toggleQueen(this, 3, 3)"></td><td onclick="toggleQueen(this, 3, 4)"></td><td onclick="toggleQueen(this, 3, 5)"></td><td onclick="toggleQueen(this, 3, 6)"></td><td onclick="toggleQueen(this, 3, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 4, 0)"></td><td onclick="toggleQueen(this, 4, 1)"></td><td onclick="toggleQueen(this, 4, 2)"></td><td onclick="toggleQueen(this, 4, 3)"></td><td onclick="toggleQueen(this, 4, 4)"></td><td onclick="toggleQueen(this, 4, 5)"></td><td onclick="toggleQueen(this, 4, 6)"></td><td onclick="toggleQueen(this, 4, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 5, 0)"></td><td onclick="toggleQueen(this, 5, 1)"></td><td onclick="toggleQueen(this, 5, 2)"></td><td onclick="toggleQueen(this, 5, 3)"></td><td onclick="toggleQueen(this, 5, 4)"></td><td onclick="toggleQueen(this, 5, 5)"></td><td onclick="toggleQueen(this, 5, 6)"></td><td onclick="toggleQueen(this, 5, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 6, 0)"></td><td onclick="toggleQueen(this, 6, 1)"></td><td onclick="toggleQueen(this, 6, 2)"></td><td onclick="toggleQueen(this, 6, 3)"></td><td onclick="toggleQueen(this, 6, 4)"></td><td onclick="toggleQueen(this, 6, 5)"></td><td onclick="toggleQueen(this, 6, 6)"></td><td onclick="toggleQueen(this, 6, 7)"></td></tr>
+                        <tr><td onclick="toggleQueen(this, 7, 0)"></td><td onclick="toggleQueen(this, 7, 1)"></td><td onclick="toggleQueen(this, 7, 2)"></td><td onclick="toggleQueen(this, 7, 3)"></td><td onclick="toggleQueen(this, 7, 4)"></td><td onclick="toggleQueen(this, 7, 5)"></td><td onclick="toggleQueen(this, 7, 6)"></td><td onclick="toggleQueen(this, 7, 7)"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <img src="img/Imagen-Negra.png" id="image-right" alt="Imagen Negra">
+        </div>
+    </main>
+
+    <footer>
+        <!-- Controles del juego -->
+        <div class="controls">
+            <button id="startButton" onclick="startGame()">Iniciar Juego</button>
+            <button id="endButton" onclick="endTurn()" disabled>Terminar Turno</button>
+            <button id="resetButton" onclick="resetGame()">Reiniciar Partida</button>
+            <button id="runSolutionButton">Ejecutar Solución de Prueba</button>
+        </div>
+    </footer>
+
+    <!-- Estado del juego -->
+    <div id="status">Por favor, inicie el juego para comenzar.</div>
+
+    <!-- Enlaza con el archivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+
+<!--
+    01000101 01101101 01101101 01100001 01101110 01110101 01100101 01101100 00100000 01010000 01100101 01110010 01100101 01111010 00100000 01010101 01101110 01101001 01101011 01101001 01101110 01101111 
+-->
